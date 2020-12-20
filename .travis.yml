@@ -1,4 +1,8 @@
+dist: xenial
 language: java
-script: ./mvnw clean install
-jdk:
-  - openjdk8
+sudo: false
+jdk: openjdk14
+install: true
+cache:
+  directories:
+    -$HOME/.m2
