@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import com.cursospringboot.bookstoragemanager.author.entity.Author;
+import com.cursospringboot.bookstoragemanager.entity.Auditable;
 import com.cursospringboot.bookstoragemanager.publishers.entity.Publisher;
 import com.cursospringboot.bookstoragemanager.users.entity.User;
 
@@ -16,7 +17,7 @@ import lombok.Data;
 
 @Data
 @Entity
-public class Book {
+public class Book extends Auditable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
