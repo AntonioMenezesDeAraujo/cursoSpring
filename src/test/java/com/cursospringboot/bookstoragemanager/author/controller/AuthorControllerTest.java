@@ -1,39 +1,74 @@
 package com.cursospringboot.bookstoragemanager.author.controller;
 
+import org.hamcrest.core.Is;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MockMvcBuilder;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 import com.cursospringboot.bookstoragemanager.author.builder.AuthorDTOBuilder;
+import com.cursospringboot.bookstoragemanager.author.dto.AuthorDTO;
 import com.cursospringboot.bookstoragemanager.author.service.AuthorService;
+import com.cursospringboot.bookstoragemanager.utils.JsonConversionUtils;
 
 @ExtendWith(MockitoExtension.class)
 public class AuthorControllerTest {
 
 	@Mock
 	private AuthorService authorService;
-	
+
 	@InjectMocks
 	private AuthorController authorController;
-	
+
 	private MockMvc mockMvc;
-	
+
 	private AuthorDTOBuilder authorDTOBuilder;
+
+	private final String AUTHOR_API_URL_PATH= "/api/v1/authors";
 	
 	@BeforeEach
 	void setup() {
 		this.authorDTOBuilder = AuthorDTOBuilder.builder().build();
-		
+
 		mockMvc = MockMvcBuilders.standaloneSetup(authorController)
 				.setCustomArgumentResolvers(new PageableHandlerMethodArgumentResolver())
-				.setViewResolvers((s,locale) -> new MappingJackson2JsonView())
-				.build();
+				.setViewResolvers((s, locale) -> new MappingJackson2JsonView()).build();
 	}
+
+	@Test
+	void whenPOSTIsCalledThenStatusCreatedShouldBeReturned() throws Exception {
+		AuthorDTO expectedCreatedAuthorDTO = authorDTOBuilder.builderAuthorDTO();
+
+		Mockito.when(authorService.create(expectedCreatedAuthorDTO)).thenReturn(expectedCreatedAuthorDTO);
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.post(AUTHOR_API_URL_PATH).contentType(JsonConversionUtils.asJsonString(expectedCreatedAuthorDTO)))
+				.andExpect(MockMvcResultMatchers.status().isCreated())
+				.andExpect(MockMvcResultMatchers.jsonPath("$.id", Is.is(expectedCreatedAuthorDTO.getId().intValue())))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.name", Is.is(expectedCreatedAuthorDTO.getName())))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.age", Is.is(expectedCreatedAuthorDTO.getAge())));
+
+	}
+	
+	@Test
+	void whenPOSTIsCalledWithoutRequiredFieldThenBadRequestStatusShouldBeInformed() throws Exception {
+		AuthorDTO expectedCreatedAuthorDTO = authorDTOBuilder.builderAuthorDTO();
+		
+		expectedCreatedAuthorDTO.setName(null);
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.post(AUTHOR_API_URL_PATH).contentType(JsonConversionUtils.asJsonString(expectedCreatedAuthorDTO)))
+				.andExpect(MockMvcResultMatchers.status().isBadRequest());
+
+	}
+
 }

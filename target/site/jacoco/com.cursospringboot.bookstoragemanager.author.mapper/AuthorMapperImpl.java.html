@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthorMapperImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bookstoragemanager</a> &gt; <a href="index.source.html" class="el_package">com.cursospringboot.bookstoragemanager.author.mapper</a> &gt; <span class="el_source">AuthorMapperImpl.java</span></div><h1>AuthorMapperImpl.java</h1><pre class="source lang-java linenums">package com.cursospringboot.bookstoragemanager.author.mapper;
+
+import com.cursospringboot.bookstoragemanager.author.dto.AuthorDTO;
+import com.cursospringboot.bookstoragemanager.author.entity.Author;
+import javax.annotation.Generated;
+
+@Generated(
+    value = &quot;org.mapstruct.ap.MappingProcessor&quot;,
+    date = &quot;2021-01-01T12:36:22-0300&quot;,
+    comments = &quot;version: 1.3.1.Final, compiler: javac, environment: Java 1.8.0_171 (Oracle Corporation)&quot;
+)
+<span class="nc" id="L12">public class AuthorMapperImpl implements AuthorMapper {</span>
+
+    @Override
+    public Author toModel(AuthorDTO authorDTO) {
+<span class="nc bnc" id="L16" title="All 2 branches missed.">        if ( authorDTO == null ) {</span>
+<span class="nc" id="L17">            return null;</span>
+        }
+
+<span class="nc" id="L20">        Author author = new Author();</span>
+
+<span class="nc" id="L22">        author.setId( authorDTO.getId() );</span>
+<span class="nc" id="L23">        author.setName( authorDTO.getName() );</span>
+<span class="nc bnc" id="L24" title="All 2 branches missed.">        if ( authorDTO.getAge() != null ) {</span>
+<span class="nc" id="L25">            author.setAge( authorDTO.getAge() );</span>
+        }
+
+<span class="nc" id="L28">        return author;</span>
+    }
+
+    @Override
+    public AuthorDTO toDTO(Author author) {
+<span class="nc bnc" id="L33" title="All 2 branches missed.">        if ( author == null ) {</span>
+<span class="nc" id="L34">            return null;</span>
+        }
+
+<span class="nc" id="L37">        AuthorDTO authorDTO = new AuthorDTO();</span>
+
+<span class="nc" id="L39">        authorDTO.setId( author.getId() );</span>
+<span class="nc" id="L40">        authorDTO.setName( author.getName() );</span>
+<span class="nc" id="L41">        authorDTO.setAge( author.getAge() );</span>
+
+<span class="nc" id="L43">        return authorDTO;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
