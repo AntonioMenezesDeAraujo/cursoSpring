@@ -1,1 +1,6 @@
+com/cursospringboot/bookstoragemanager/utils/JsonConversionUtils.class
+com/cursospringboot/bookstoragemanager/author/builder/AuthorDTOBuilder.class
+com/cursospringboot/bookstoragemanager/author/service/AuthorServiceTest.class
 com/cursospringboot/bookstoragemanager/BookstoragemanagerApplicationTests.class
+com/cursospringboot/bookstoragemanager/author/builder/AuthorDTOBuilder$AuthorDTOBuilderBuilder.class
+com/cursospringboot/bookstoragemanager/author/controller/AuthorControllerTest.class

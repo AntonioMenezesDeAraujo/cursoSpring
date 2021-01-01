@@ -1,1 +1,5 @@
-/home/antonio/Programas/workspace/bookstoragemanager/src/test/java/com/cursospringboot/bookstoragemanager/BookstoragemanagerApplicationTests.java
+/home/antonio/git/bookManager/bookstoragemanager/src/test/java/com/cursospringboot/bookstoragemanager/author/controller/AuthorControllerTest.java
+/home/antonio/git/bookManager/bookstoragemanager/src/test/java/com/cursospringboot/bookstoragemanager/utils/JsonConversionUtils.java
+/home/antonio/git/bookManager/bookstoragemanager/src/test/java/com/cursospringboot/bookstoragemanager/author/service/AuthorServiceTest.java
+/home/antonio/git/bookManager/bookstoragemanager/src/test/java/com/cursospringboot/bookstoragemanager/author/builder/AuthorDTOBuilder.java
+/home/antonio/git/bookManager/bookstoragemanager/src/test/java/com/cursospringboot/bookstoragemanager/BookstoragemanagerApplicationTests.java

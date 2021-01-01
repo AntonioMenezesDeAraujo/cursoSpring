@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SwaggerConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bookstoragemanager</a> &gt; <a href="index.source.html" class="el_package">com.cursospringboot.bookstoragemanager.config</a> &gt; <span class="el_source">SwaggerConfig.java</span></div><h1>SwaggerConfig.java</h1><pre class="source lang-java linenums">package com.cursospringboot.bookstoragemanager.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
+import springfox.documentation.builders.RequestHandlerSelectors;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.Contact;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+@Configuration
+@EnableSwagger2
+<span class="nc" id="L17">public class SwaggerConfig {</span>
+
+<span class="nc" id="L19">	private String BASE_PACKAGE = &quot;com.cursospringboot.bookstoragemanager&quot;;</span>
+<span class="nc" id="L20">	private String title = &quot;Bookstore Manager Course&quot;;</span>
+<span class="nc" id="L21">	private String DESCRIPTION = &quot;Api de gerenciamento de livros profissional&quot;;</span>
+<span class="nc" id="L22">	private String USER = &quot;Antonio Menezes de Araujo&quot;;</span>
+<span class="nc" id="L23">	private String URL = &quot;http://www.github.com&quot;;</span>
+<span class="nc" id="L24">	private String EMAIL = &quot;antoniomenezes20@gmail.com&quot;;</span>
+
+	@Bean
+	public Docket api() {
+		
+<span class="nc" id="L29">		return new Docket(DocumentationType.SWAGGER_2).select()</span>
+<span class="nc" id="L30">				.apis(RequestHandlerSelectors.basePackage(BASE_PACKAGE))</span>
+<span class="nc" id="L31">				.paths(PathSelectors.any()).build().apiInfo(buildApiInfo());</span>
+	}
+
+	private ApiInfo buildApiInfo() {
+<span class="nc" id="L35">		return new ApiInfoBuilder()</span>
+<span class="nc" id="L36">				.title(title)</span>
+<span class="nc" id="L37">				.description(DESCRIPTION)</span>
+<span class="nc" id="L38">				.version(&quot;1.0.0&quot;)</span>
+<span class="nc" id="L39">				.contact(new Contact(USER, URL, EMAIL))</span>
+<span class="nc" id="L40">				.build();	</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
