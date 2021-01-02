@@ -17,7 +17,7 @@ public class AuthorService {
 	private AuthorRepository authorRepository;
 
 	public AuthorService() {
-		
+		super();
 	}
 	
 	@Autowired

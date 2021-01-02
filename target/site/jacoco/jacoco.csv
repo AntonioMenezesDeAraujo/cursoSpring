@@ -6,7 +6,7 @@ bookstoragemanager,com.cursospringboot.bookstoragemanager.exception,ApiError.Api
 bookstoragemanager,com.cursospringboot.bookstoragemanager.books.entity,Book,350,0,58,0,9,0,50,0,21,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.mapper,AuthorMapperImpl,52,0,6,0,16,0,6,0,3,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.mapper,AuthorMapper,5,0,0,0,1,0,1,0,1,0
-bookstoragemanager,com.cursospringboot.bookstoragemanager.author.service,AuthorService,40,0,0,0,11,0,5,0,5,0
+bookstoragemanager,com.cursospringboot.bookstoragemanager.author.service,AuthorService,43,0,0,0,13,0,6,0,6,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.exception,AuthorAlreadyExistsException,11,0,0,0,2,0,1,0,1,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.customInfoEndpoint,InfoWebPointExtension,31,0,0,0,7,0,3,0,3,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.entity,Auditable,17,0,0,0,4,0,5,0,5,0

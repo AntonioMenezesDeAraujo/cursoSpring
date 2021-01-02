@@ -20,7 +20,7 @@ import lombok.Setter;
 <span class="nc" id="L20">public abstract class Auditable {</span>
 
 	@CreatedDate
-	@Column(nullable = false)
+	@Column
 <span class="nc" id="L24">	protected LocalDateTime createdDate;</span>
 	
 	@LastModifiedDate
