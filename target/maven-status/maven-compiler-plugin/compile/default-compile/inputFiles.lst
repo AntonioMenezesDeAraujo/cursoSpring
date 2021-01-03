@@ -6,6 +6,7 @@
 /home/antonio/git/bookManager/bookstoragemanager/src/main/java/com/cursospringboot/bookstoragemanager/exception/ApiError.java
 /home/antonio/git/bookManager/bookstoragemanager/src/main/java/com/cursospringboot/bookstoragemanager/entity/Auditable.java
 /home/antonio/git/bookManager/bookstoragemanager/src/main/java/com/cursospringboot/bookstoragemanager/users/enums/Gender.java
+/home/antonio/git/bookManager/bookstoragemanager/src/main/java/com/cursospringboot/bookstoragemanager/author/exception/AuthorNotFoundException.java
 /home/antonio/git/bookManager/bookstoragemanager/src/main/java/com/cursospringboot/bookstoragemanager/author/entity/Author.java
 /home/antonio/git/bookManager/bookstoragemanager/src/main/java/com/cursospringboot/bookstoragemanager/author/controller/AuthorControllerDocs.java
 /home/antonio/git/bookManager/bookstoragemanager/src/main/java/com/cursospringboot/bookstoragemanager/books/entity/Book.java

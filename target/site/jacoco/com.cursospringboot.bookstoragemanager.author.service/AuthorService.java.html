@@ -6,38 +6,44 @@ import org.springframework.stereotype.Service;
 import com.cursospringboot.bookstoragemanager.author.dto.AuthorDTO;
 import com.cursospringboot.bookstoragemanager.author.entity.Author;
 import com.cursospringboot.bookstoragemanager.author.exception.AuthorAlreadyExistsException;
+import com.cursospringboot.bookstoragemanager.author.exception.AuthorNotFoundException;
 import com.cursospringboot.bookstoragemanager.author.mapper.AuthorMapper;
 import com.cursospringboot.bookstoragemanager.author.repository.AuthorRepository;
 
 @Service
 public class AuthorService {
 
-<span class="nc" id="L15">	private final static AuthorMapper authorMapper = AuthorMapper.INSTANCE;</span>
+<span class="nc" id="L16">	private final static AuthorMapper authorMapper = AuthorMapper.INSTANCE;</span>
 
 	private AuthorRepository authorRepository;
 
 	public AuthorService() {
-<span class="nc" id="L20">		super();</span>
-<span class="nc" id="L21">	}</span>
+<span class="nc" id="L21">		super();</span>
+<span class="nc" id="L22">	}</span>
 	
 	@Autowired
-<span class="nc" id="L24">	public AuthorService(AuthorRepository authorRepository) {</span>
-<span class="nc" id="L25">		this.authorRepository = authorRepository;</span>
-<span class="nc" id="L26">	}</span>
+<span class="nc" id="L25">	public AuthorService(AuthorRepository authorRepository) {</span>
+<span class="nc" id="L26">		this.authorRepository = authorRepository;</span>
+<span class="nc" id="L27">	}</span>
 
 	public AuthorDTO create(AuthorDTO authorDTO) {
 
-<span class="nc" id="L30">		verifyIsExists(authorDTO.getName());</span>
-
-<span class="nc" id="L32">		Author authorToCreate = authorMapper.toModel(authorDTO);</span>
-<span class="nc" id="L33">		Author createdAuthor = authorRepository.save(authorToCreate);</span>
-<span class="nc" id="L34">		return authorMapper.toDTO(createdAuthor);</span>
+<span class="nc" id="L31">		verifyIsExists(authorDTO.getName());</span>
+																																																																										
+<span class="nc" id="L33">		Author authorToCreate = authorMapper.toModel(authorDTO);</span>
+<span class="nc" id="L34">		Author createdAuthor = authorRepository.save(authorToCreate);</span>
+<span class="nc" id="L35">		return authorMapper.toDTO(createdAuthor);</span>
 	}
 
+	public AuthorDTO findById(Long id) {
+<span class="nc" id="L39">		Author foundAuthor = this.authorRepository.findById(id).orElseThrow(() -&gt; new AuthorNotFoundException(id));</span>
+<span class="nc" id="L40">		return authorMapper.toDTO(foundAuthor);</span>
+	}
+	
 	private void verifyIsExists(String authorName) {
-<span class="nc" id="L38">		authorRepository.findByName(authorName).ifPresent(author -&gt; {</span>
-<span class="nc" id="L39">			throw new AuthorAlreadyExistsException(authorName);</span>
+<span class="nc" id="L44">		authorRepository.findByName(authorName).ifPresent(author -&gt; {</span>
+<span class="nc" id="L45">			throw new AuthorAlreadyExistsException(authorName);</span>
 		});
-<span class="nc" id="L41">	}</span>
+<span class="nc" id="L47">	}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>
