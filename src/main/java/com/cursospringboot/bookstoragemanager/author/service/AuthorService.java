@@ -1,5 +1,8 @@
 package com.cursospringboot.bookstoragemanager.author.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +42,13 @@ public class AuthorService {
 		Author foundAuthor = this.authorRepository.findById(id).orElseThrow(() -> new AuthorNotFoundException(id));
 		return authorMapper.toDTO(foundAuthor);
 	}
+	
+	public List<AuthorDTO> findAll() {
+		return authorRepository.findAll().stream().map(authorMapper::toDTO).collect(Collectors.toList());
+	}
+	
+	
+	
 	
 	private void verifyIsExists(String authorName) {
 		authorRepository.findByName(authorName).ifPresent(author -> {

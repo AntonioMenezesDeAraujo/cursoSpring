@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AuthorController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">bookstoragemanager</a> &gt; <a href="index.source.html" class="el_package">com.cursospringboot.bookstoragemanager.author.controller</a> &gt; <span class="el_source">AuthorController.java</span></div><h1>AuthorController.java</h1><pre class="source lang-java linenums">package com.cursospringboot.bookstoragemanager.author.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,23 +24,30 @@ public class AuthorController implements AuthorControllerDocs {
 	private AuthorService authorService;
 	
 	public AuthorController() {
-<span class="nc" id="L25">		super();</span>
-<span class="nc" id="L26">	}</span>
+<span class="nc" id="L27">		super();</span>
+<span class="nc" id="L28">	}</span>
 
 	@Autowired
-<span class="nc" id="L29">	public AuthorController(AuthorService authorService) {</span>
-<span class="nc" id="L30">		this.authorService = authorService;</span>
-<span class="nc" id="L31">	}</span>
+<span class="nc" id="L31">	public AuthorController(AuthorService authorService) {</span>
+<span class="nc" id="L32">		this.authorService = authorService;</span>
+<span class="nc" id="L33">	}</span>
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public AuthorDTO create(@RequestBody @Valid AuthorDTO authorDTO) {
-<span class="nc" id="L36">		return authorService.create(authorDTO);</span>
+<span class="nc" id="L38">		return authorService.create(authorDTO);</span>
 	}
 	
 	@GetMapping(&quot;/{id}&quot;)
 	public AuthorDTO findById(@PathVariable Long id) {
-<span class="nc" id="L41">		return authorService.findById(id);</span>
+<span class="nc" id="L43">		return authorService.findById(id);</span>
 	}
+	
+	@GetMapping
+	public List&lt;AuthorDTO&gt; findAll() {
+<span class="nc" id="L48">		return authorService.findAll();</span>
+	}
+	
+	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

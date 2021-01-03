@@ -1,5 +1,7 @@
 package com.cursospringboot.bookstoragemanager.author.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.cursospringboot.bookstoragemanager.author.dto.AuthorDTO;
@@ -25,4 +27,11 @@ public interface AuthorControllerDocs {
 			@ApiResponse(code = 404, message = "Author not found error code")
 	})
 	AuthorDTO findById(@PathVariable Long id);
+	
+	
+	@ApiOperation(value = "List all registered authors")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Return all Success author")
+	})
+	List<AuthorDTO> findAll();
 }
