@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,30 +25,35 @@ public class AuthorController implements AuthorControllerDocs {
 	private AuthorService authorService;
 	
 	public AuthorController() {
-<span class="nc" id="L27">		super();</span>
-<span class="nc" id="L28">	}</span>
+<span class="nc" id="L28">		super();</span>
+<span class="nc" id="L29">	}</span>
 
 	@Autowired
-<span class="nc" id="L31">	public AuthorController(AuthorService authorService) {</span>
-<span class="nc" id="L32">		this.authorService = authorService;</span>
-<span class="nc" id="L33">	}</span>
+<span class="nc" id="L32">	public AuthorController(AuthorService authorService) {</span>
+<span class="nc" id="L33">		this.authorService = authorService;</span>
+<span class="nc" id="L34">	}</span>
 
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
 	public AuthorDTO create(@RequestBody @Valid AuthorDTO authorDTO) {
-<span class="nc" id="L38">		return authorService.create(authorDTO);</span>
+<span class="nc" id="L39">		return authorService.create(authorDTO);</span>
 	}
 	
 	@GetMapping(&quot;/{id}&quot;)
 	public AuthorDTO findById(@PathVariable Long id) {
-<span class="nc" id="L43">		return authorService.findById(id);</span>
+<span class="nc" id="L44">		return authorService.findById(id);</span>
 	}
 	
 	@GetMapping
 	public List&lt;AuthorDTO&gt; findAll() {
-<span class="nc" id="L48">		return authorService.findAll();</span>
+<span class="nc" id="L49">		return authorService.findAll();</span>
 	}
 	
+	@DeleteMapping(&quot;/{id}&quot;)
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable Long id) {
+<span class="nc" id="L55">		authorService.delete(id);</span>
+<span class="nc" id="L56">	}</span>
 	
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

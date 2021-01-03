@@ -120,5 +120,34 @@ public class AuthorServiceTest {
 		
 		MatcherAssert.assertThat(foundAuthorsDTO.size(), is(0));
 	}
+	
+	@Test
+	void whenValidAuthorIdIsGivenThenItShouldDeleted() {
+		AuthorDTO expectedFoundAuthorDTO = authorDTOBuilder.builderAuthorDTO();
+		
+		Author expectedDeletedAuthor = authorMapper.toModel(expectedFoundAuthorDTO);
+		
+		Long expectedDeletedAuthorId = expectedFoundAuthorDTO.getId();
+		
+		Mockito.doNothing().when(authorRepository).deleteById(expectedDeletedAuthorId);
+		
+		Mockito.when(authorRepository.findById(expectedDeletedAuthorId)).thenReturn(Optional.of(expectedDeletedAuthor));
+		
+		authorService.delete(expectedDeletedAuthorId);
+		
+		Mockito.verify(authorRepository,Mockito.times(1)).deleteById(expectedDeletedAuthorId);
+		
+		Mockito.verify(authorRepository,Mockito.times(1)).findById(expectedDeletedAuthorId);
+	}
+	
+	@Test
+	void whenInvalidAuthorIdIsGivenThenItAnExceptionShouldBeThrown() {
+		Long expectedInvalidAuthorId = 2L;
+		
+		Mockito.when(authorRepository.findById(expectedInvalidAuthorId)).thenReturn(Optional.empty());
+		
+		assertThrows(AuthorNotFoundException.class, () -> authorService.delete(expectedInvalidAuthorId));		
+	}
+	
 	 
 }

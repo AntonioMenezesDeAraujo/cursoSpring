@@ -1,5 +1,8 @@
 package com.cursospringboot.bookstoragemanager.author.controller;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
 import java.util.Collections;
 
 import org.hamcrest.core.Is;
@@ -11,6 +14,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
@@ -102,4 +106,17 @@ public class AuthorControllerTest {
 				.andExpect(MockMvcResultMatchers.jsonPath("$[0].age", Is.is(expectedFoundAuthorDTO.getAge())));
 
 	}
+	
+	@Test
+	void whenDELETEWithValidIdIsCalledThenNoContentShouldBeReturned() throws Exception {
+		AuthorDTO expectedAuthorDeletedDTO = authorDTOBuilder.builderAuthorDTO();
+		
+		Mockito.doNothing().when(authorService).delete(expectedAuthorDeletedDTO.getId());
+		
+		mockMvc.perform(delete(AUTHOR_API_URL_PATH + "/" + expectedAuthorDeletedDTO.getId())
+				.contentType(MediaType.APPLICATION_JSON)).andExpect(status().isNoContent());
+				
+		
+	}
+	
 }
