@@ -22,3 +22,4 @@ com/cursospringboot/bookstoragemanager/entity/Auditable.class
 com/cursospringboot/bookstoragemanager/author/mapper/AuthorMapper.class
 com/cursospringboot/bookstoragemanager/exception/ApiError$ApiErrorBuilder.class
 com/cursospringboot/bookstoragemanager/author/exception/AuthorAlreadyExistsException.class
+com/cursospringboot/bookstoragemanager/author/exception/AuthorNotFoundException.class

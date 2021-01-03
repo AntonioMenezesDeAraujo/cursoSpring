@@ -71,4 +71,18 @@ public class AuthorControllerTest {
 
 	}
 
+	@Test
+	void whenGETWithValidIdIsCalledThenStatusOkShouldBeReturned() throws Exception {
+		AuthorDTO expectedFoundAuthorDTO = authorDTOBuilder.builderAuthorDTO();
+
+		Mockito.when(authorService.findById(expectedFoundAuthorDTO.getId())).thenReturn(expectedFoundAuthorDTO);
+
+		mockMvc.perform(
+				MockMvcRequestBuilders.get(AUTHOR_API_URL_PATH + "/" + expectedFoundAuthorDTO.getId()))
+				.andExpect(MockMvcResultMatchers.status().isOk())
+				.andExpect(MockMvcResultMatchers.jsonPath("$.id", Is.is(expectedFoundAuthorDTO.getId().intValue())))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.name", Is.is(expectedFoundAuthorDTO.getName())))
+				.andExpect(MockMvcResultMatchers.jsonPath("$.age", Is.is(expectedFoundAuthorDTO.getAge())));
+
+	}
 }

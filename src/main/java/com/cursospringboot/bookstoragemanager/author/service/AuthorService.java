@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.cursospringboot.bookstoragemanager.author.dto.AuthorDTO;
 import com.cursospringboot.bookstoragemanager.author.entity.Author;
 import com.cursospringboot.bookstoragemanager.author.exception.AuthorAlreadyExistsException;
+import com.cursospringboot.bookstoragemanager.author.exception.AuthorNotFoundException;
 import com.cursospringboot.bookstoragemanager.author.mapper.AuthorMapper;
 import com.cursospringboot.bookstoragemanager.author.repository.AuthorRepository;
 
@@ -28,12 +29,17 @@ public class AuthorService {
 	public AuthorDTO create(AuthorDTO authorDTO) {
 
 		verifyIsExists(authorDTO.getName());
-
+																																																																										
 		Author authorToCreate = authorMapper.toModel(authorDTO);
 		Author createdAuthor = authorRepository.save(authorToCreate);
 		return authorMapper.toDTO(createdAuthor);
 	}
 
+	public AuthorDTO findById(Long id) {
+		Author foundAuthor = this.authorRepository.findById(id).orElseThrow(() -> new AuthorNotFoundException(id));
+		return authorMapper.toDTO(foundAuthor);
+	}
+	
 	private void verifyIsExists(String authorName) {
 		authorRepository.findByName(authorName).ifPresent(author -> {
 			throw new AuthorAlreadyExistsException(authorName);
