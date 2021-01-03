@@ -6,7 +6,7 @@ bookstoragemanager,com.cursospringboot.bookstoragemanager.exception,ApiError.Api
 bookstoragemanager,com.cursospringboot.bookstoragemanager.books.entity,Book,350,0,58,0,9,0,50,0,21,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.mapper,AuthorMapperImpl,52,0,6,0,16,0,6,0,3,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.mapper,AuthorMapper,5,0,0,0,1,0,1,0,1,0
-bookstoragemanager,com.cursospringboot.bookstoragemanager.author.service,AuthorService,61,0,0,0,15,0,8,0,8,0
+bookstoragemanager,com.cursospringboot.bookstoragemanager.author.service,AuthorService,75,0,0,0,16,0,9,0,9,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.exception,AuthorAlreadyExistsException,11,0,0,0,2,0,1,0,1,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.exception,AuthorNotFoundException,11,0,0,0,2,0,1,0,1,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.customInfoEndpoint,InfoWebPointExtension,31,0,0,0,7,0,3,0,3,0
@@ -16,6 +16,6 @@ bookstoragemanager,com.cursospringboot.bookstoragemanager.config,SwaggerConfig,6
 bookstoragemanager,com.cursospringboot.bookstoragemanager,BookstoragemanagerApplication,8,0,0,0,3,0,2,0,2,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.controller,BookController,5,0,0,0,2,0,2,0,2,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.users.enums,Gender,37,0,0,0,7,0,3,0,3,0
-bookstoragemanager,com.cursospringboot.bookstoragemanager.author.controller,AuthorController,19,0,0,0,7,0,4,0,4,0
+bookstoragemanager,com.cursospringboot.bookstoragemanager.author.controller,AuthorController,23,0,0,0,8,0,5,0,5,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.author.entity,Author,195,0,32,0,5,0,29,0,13,0
 bookstoragemanager,com.cursospringboot.bookstoragemanager.users.entity,User,410,0,72,0,10,0,59,0,23,0
